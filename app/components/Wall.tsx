@@ -6,9 +6,9 @@ import { useTexture } from "@react-three/drei"
 import vertexJitter from "../shaders/vertexJitter"
 import fragmentAffine from "../shaders/fragmentAffine"
 
-const Floor: React.FC<MeshProps> = (props) => {
-  const geometry = new THREE.PlaneGeometry(20, 20, 20, 20);
-  const texture = useTexture('./blender/concrete1.png')
+const Wall: React.FC<MeshProps> = (props) => {
+  const geometry = new THREE.BoxGeometry(20, 5, 1, 20, 5, 1);
+  const texture = useTexture('./blender/brick1.png')
   texture.repeat.set(10, 10)
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping
 
@@ -18,10 +18,10 @@ const Floor: React.FC<MeshProps> = (props) => {
         attach='material'
         vertexShader={vertexJitter}
         fragmentShader={fragmentAffine}
-        uniforms={{uTexture: {value: texture}, uJitterLevel: {value: 175}, repeat: {value: [10, 10]}}}
+        uniforms={{uTexture: {value: texture}, uJitterLevel: {value: 175}, repeat: {value: [10, 5]}}}
       />
     </mesh>
   )
 }
 
-export default Floor
+export default Wall

@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber"
 import Floor from "./components/Floor"
-import Box from "./components/Box"
+import Wall from "./components/Wall"
 import PointLight from "./components/PointLight"
 import OrbitControls from "./components/OrbitControls"
 import WoodCrate from "./components/WoodCrate"
@@ -22,8 +22,9 @@ const Home = () => {
       <WoodCrate position={[5, 0, 0]} rotation={[0, 15.7, 0]}/>
       <WoodCrate position={[5, 0, 2]} rotation={[0, 15.7, 0]}/>
       <WoodCrate position={[5, 2, 0]} rotation={[0, 15.7, 0]}/>
+      <Wall position={[10, 2, 0]} rotation={[0, 4.7, 0]}/>
       <OrbitControls />
-      <Floor />
+      <Floor rotation={[Math.PI * -0.5, 0, 0]}/>
     </Canvas>
     <input />
    </div>
