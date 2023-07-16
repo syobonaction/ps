@@ -7,7 +7,7 @@ import vertexJitter from "../shaders/vertexJitter"
 import fragmentAffine from "../shaders/fragmentAffine"
 
 const Wall: React.FC<MeshProps> = (props) => {
-  const geometry = new THREE.BoxGeometry(20, 5, 1, 20, 5, 1);
+  const geometry = new THREE.BoxGeometry(20, 10, 1, 20, 5, 1);
   const texture = useTexture('./blender/brick1.png')
   texture.repeat.set(10, 10)
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping
