@@ -1,15 +1,13 @@
 'use client'
 
-import { Canvas, useLoader } from "@react-three/fiber"
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { Canvas } from "@react-three/fiber"
 import Floor from "./components/Floor"
 import Box from "./components/Box"
 import PointLight from "./components/PointLight"
 import OrbitControls from "./components/OrbitControls"
+import WoodCrate from "./components/WoodCrate"
 
 const Home = () => {
-  const box = useLoader(GLTFLoader, './blender/crate.gltf')
-
   return (
    <div className="w-screen h-screen">
     <Canvas 
@@ -21,8 +19,9 @@ const Home = () => {
     >
       <ambientLight color={"white"} intensity={0.3} />
       <PointLight position={[0, 3, 0]} />
-      <primitive object={box.scene} position={[0, 0, 0]}/>
-      <Box position={[3, 2, 0]} />
+      <WoodCrate position={[5, 0, 0]} rotation={[0, 15.7, 0]}/>
+      <WoodCrate position={[5, 0, 2]} rotation={[0, 15.7, 0]}/>
+      <WoodCrate position={[5, 2, 0]} rotation={[0, 15.7, 0]}/>
       <OrbitControls />
       <Floor />
     </Canvas>
