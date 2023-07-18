@@ -9,7 +9,7 @@ import PointLight from "./components/PointLight"
 import OrbitControls from "./components/OrbitControls"
 import WoodCrate from "./components/WoodCrate"
 import { Suspense } from "react"
-import Player from "./components/Player"
+// import Player from "./components/Player"
 
 const Home = () => {
   return (
