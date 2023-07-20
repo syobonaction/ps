@@ -7,6 +7,7 @@ import { useTexture } from "@react-three/drei"
 import { Mesh } from "three"
 import vertexJitter from "../shaders/vertexJitter"
 import fragmentAffine from "../shaders/fragmentAffine"
+import { RigidBody } from "@react-three/rapier"
 
 const WoodCrate: React.FC<MeshProps> = (props) => {
   const model = useLoader(OBJLoader, './blender/crate.obj')
@@ -25,19 +26,21 @@ const WoodCrate: React.FC<MeshProps> = (props) => {
   }, [model])
 
   return (
-    <mesh 
-      {...props}
-      geometry={geometry}
-      scale={1}
-      castShadow
-    >
-      <shaderMaterial 
-        attach='material'
-        vertexShader={vertexJitter}
-        fragmentShader={fragmentAffine}
-        uniforms={{uTexture: {value: texture}, uJitterLevel: {value: 175}, repeat: {value: [1, 1]}}}
-      />
-    </mesh>
+    <RigidBody colliders={"hull"}>
+      <mesh 
+        {...props}
+        geometry={geometry}
+        scale={1}
+        castShadow
+      >
+        <shaderMaterial 
+          attach='material'
+          vertexShader={vertexJitter}
+          fragmentShader={fragmentAffine}
+          uniforms={{uTexture: {value: texture}, uJitterLevel: {value: 175}, repeat: {value: [1, 1]}}}
+        />
+      </mesh>
+    </RigidBody>
   )
 }
 
